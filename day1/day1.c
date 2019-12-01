@@ -2,21 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define INPUT_LEN 100
-int inputData[100];
-
-int* readInput(const char *fname, int *inputData) {
-    FILE *fp = fopen(fname, "r");
-    char lineBuffer[1000];
-    int i = 0;
-    while(fgets(lineBuffer, 1000, fp) != NULL && i < INPUT_LEN) {
-        inputData[i] = strtol(lineBuffer, NULL, 10);
-        printf("%d\n", inputData[i]);
-        i++;
-    }
-
-    return inputData;
-}
+#define RECURSIVE 1
 
 int readNextInt(FILE *fp, int *val) {
     char lineBuffer[1000];
