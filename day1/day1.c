@@ -14,7 +14,15 @@ int readNextInt(FILE *fp, int *val) {
 
 
 int calcFuel(int mass) {
-    return floorl(mass / 3.0) - 2;
+    int fuelForCurrent = floorl(mass / 3.0) - 2;
+    if (fuelForCurrent < 1)
+        return 0;
+    if (RECURSIVE) {
+        return fuelForCurrent + calcFuel(fuelForCurrent);
+    }
+    else {
+        return fuelForCurrent;
+    }
 }
 
 
@@ -31,4 +39,5 @@ int main(int argc, char *argv[]) {
         sum += calcFuel(nextInt);
     }
     printf("Total fuel required: %d\n", sum);
+    fclose(fp);
 }
